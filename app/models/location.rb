@@ -4,4 +4,8 @@ class Location < ApplicationRecord
     
      belongs_to :locatable, :polymorphic => true
      acts_as_mappable
+     
+     def self.user_count(coordinates)
+         self.closest(:origin=> coordinates).first.users.count
+     end
 end
