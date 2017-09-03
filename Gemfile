@@ -18,6 +18,8 @@ gem 'geokit-rails'
 
 gem 'puma'
 
+gem 'pry'
+
 # token authentication
 gem 'devise_token_auth'
 
