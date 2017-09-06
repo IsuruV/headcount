@@ -3,7 +3,7 @@ module Api::V1
     include LocationsHelper
     
     ##format /v1/locations/?lat={latitude}&lng={longitude}&user={user_data}
-    def index
+    def create
         render json: UsersInLocation.call(coordinates_params, user_params)
     end
     
@@ -14,7 +14,7 @@ module Api::V1
   end
   
   def user_params
-      params.permit(:user).require(:device_unique_id, :manufacturer, :brand, :model, :device_id,
+      params.require(:user).permit(:device_unique_id, :manufacturer, :brand, :model, :device_id,
                  :system_name, :system_version, :bundle_id, :build_number,
                  :version, :readable_version, :device_name, :user_agent,
                  :device_locale, :device_country, :time_zone, :instance_id_android,
