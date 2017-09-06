@@ -2,9 +2,14 @@ module Api::V1
  class LocationsController < ApiController
     include LocationsHelper
     
-    ##format /v1/locations/?lat={latitude}&lng={longitude}&user={user_data}
+    ##format POST /v1/locations/?lat={latitude}&lng={longitude}&user={user_data}
     def create
         render json: UsersInLocation.call(coordinates_params, user_params)
+    end
+    
+    ##format GET /v1/locations/?lat={latitude}&lng={longitude}
+    def index
+     render json: Location.user_count(coordinates_params)
     end
     
  private
