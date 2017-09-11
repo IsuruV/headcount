@@ -19,6 +19,7 @@ class UsersInLocation
     def find_or_create_user
         self.user = User.create_with(self.user_creds).find_or_create_by(device_unique_id: self.user_creds[:device_unique_id])
         self.user.update(self.user_creds)
+        self.user.touch
     end
     
     def return_locations_user_count
